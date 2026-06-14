@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar User - SIPUSTAKA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body { font-family: 'Inter', sans-serif; }
+    </style>
+  </head>
+  <body class="bg-[#f1f5f9] text-slate-900 h-screen overflow-hidden">
+    <div class="h-screen flex flex-col md:flex-row">
+      
+      <aside class="w-full md:w-64 h-screen bg-[#030712] text-slate-100 flex-none flex flex-col">
+        <div class="px-6 py-6 border-b border-slate-900">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-[#3b82f6] flex items-center justify-center font-bold text-white text-lg">P</div>
+            <div>
+              <p class="text-[10px] text-slate-500 uppercase tracking-widest">SIPUSTAKA</p>
+              <h1 class="text-sm font-bold text-white leading-tight">Sistem Peminjaman<br>Buku</h1>
+            </div>
+          </div>
+        </div>
+        <nav class="flex-1 px-3 py-4 space-y-1">
+  
+  <a href="{% url 'dashboard' %}" class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-400 rounded-xl hover:bg-slate-900 transition">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4zM14 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2v-4z"/>
+    </svg>
+    Dashboard
+  </a>
+  
+
+  <a href="{% url 'list_buku' %}" class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-400 rounded-xl hover:bg-slate-900 transition cursor-pointer">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+    </svg>
+    Buku
+  </a>
+
+  <a href="{% url 'list_peminjaman' %}" class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-200 bg-slate-900 rounded-xl shadow-inner">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+  </svg>
+  Peminjaman
+</a>
+
+  
+  <a href="{% url 'list_siswa' %}" class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-200 bg-slate-900 rounded-xl shadow-inner cursor-default">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+    </svg>
+    User
+  </a>
+
+</nav>
+        <div class="mt-auto p-4">
+          <div class="rounded-xl bg-slate-900 p-4">
+            <p class="text-[11px] text-slate-500 font-medium">Admin Aktif</p>
+            <p class="mt-0.5 font-bold text-white text-sm">Budi Siregar</p>
+          </div>
+        </div>
+      </aside>
+
+      <main class="flex-1 p-6 md:p-8 overflow-y-auto">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <p class="text-slate-400 text-sm font-medium">Data siswa yang bisa meminjam buku.</p>
+            <h3 class="text-3xl font-bold text-slate-900 tracking-tight">Daftar User</h3>
+          </div>
+          <a href="{% url 'add_siswa' %}" class="inline-flex items-center gap-2 bg-[#2563eb] text-white px-5 py-2.5 rounded-xl font-medium text-sm shadow-sm hover:bg-blue-700 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg>
+            Tambah User
+          </a>
+        </div>
+
+        <div class="bg-white rounded-[24px] border border-slate-100 shadow-sm overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="border-b border-slate-100 text-slate-400 text-xs font-semibold uppercase tracking-wider bg-slate-50/50">
+                  <th class="px-6 py-4">ID</th>
+                  <th class="px-6 py-4">Nama</th>
+                  <th class="px-6 py-4">Kelas</th>
+                  <th class="px-6 py-4">NIS</th>
+                  <th class="px-6 py-4">Status</th>
+                  <th class="px-6 py-4 text-center">Aksi</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 text-sm text-slate-700">
+                {% for siswa in daftar_siswa %}
+                <tr class="hover:bg-slate-50/50 transition">
+                  <td class="px-6 py-4 font-medium text-slate-900">{{ siswa.id }}</td>
+                  <td class="px-6 py-4">{{ siswa.nama }}</td>
+                  <td class="px-6 py-4 text-slate-500">{{ siswa.kelas }}</td>
+                  <td class="px-6 py-4 font-mono text-slate-500">{{ siswa.nis }}</td>
+                  <td class="px-6 py-4">
+                    {% if siswa.is_active %}
+                    <span class="inline-flex items-center rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700 ring-1 ring-inset ring-emerald-600/10">Aktif</span>
+                    {% else %}
+                    <span class="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600">Nonaktif</span>
+                    {% endif %}
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center justify-center gap-2">
+                      <a href="{% url 'detail_siswa' siswa.id %}" class="rounded-xl border border-slate-200 bg-white px-4 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-50 transition">Detail</a>
+                      <a href="{% url 'edit_siswa' siswa.id %}" class="rounded-xl bg-[#2563eb] px-4 py-1.5 text-xs font-medium text-white hover:bg-blue-700 transition">Edit</a>
+                      <a href="{% url 'delete_siswa' siswa.id %}" class="rounded-xl bg-[#e11d48] px-4 py-1.5 text-xs font-medium text-white hover:bg-rose-700 transition">Hapus</a>
+                    </div>
+                  </td>
+                </tr>
+                {% empty %}
+                <tr>
+                  <td colspan="6" class="px-6 py-10 text-center text-slate-400 font-medium">Belum ada data user.</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

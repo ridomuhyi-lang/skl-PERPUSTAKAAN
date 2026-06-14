@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tambah Buku Baru - SIPUSTAKA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;500;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body { font-family: 'Inter', sans-serif; }
+    </style>
+  </head>
+  <body class="bg-[#f1f5f9] text-slate-900 h-screen overflow-hidden">
+    <div class="h-screen flex flex-col md:flex-row">
+      <aside class="w-full md:w-64 h-screen bg-[#030712] text-slate-100 flex-none flex flex-col">
+        <div class="px-6 py-6 border-b border-slate-900">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-[#3b82f6] flex items-center justify-center font-bold text-white text-lg">P</div>
+            <div>
+              <p class="text-[10px] text-slate-500 uppercase tracking-widest">SIPUSTAKA</p>
+              <h1 class="text-sm font-bold text-white leading-tight">Sistem Peminjaman<br>Buku</h1>
+            </div>
+          </div>
+        </div>
+        <nav class="flex-1 px-3 py-4 space-y-1">
+          <a href="{% url 'dashboard' %}" class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-400 rounded-xl hover:bg-slate-900 transition">Dashboard</a>
+          <a href="{% url 'list_buku' %}" class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-200 bg-slate-900 rounded-xl shadow-inner">Buku</a>
+          <a href="{% url 'list_siswa' %}" class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-400 rounded-xl hover:bg-slate-900 transition">User</a>
+        </nav>
+      </aside>
+
+      <main class="flex-1 p-6 md:p-8 overflow-y-auto">
+        <div class="flex items-center gap-2 text-sm text-slate-400 font-medium mb-1">
+          <a href="{% url 'list_buku' %}" class="hover:text-slate-600">Kelola Buku</a>
+          <span>&rarr;</span>
+          <span class="text-slate-600">Tambah Buku Baru</span>
+        </div>
+        <h3 class="text-3xl font-bold text-slate-900 tracking-tight mb-6">Tambah Buku Baru</h3>
+
+        <div class="bg-white rounded-[24px] border border-slate-100 shadow-sm p-6 max-w-5xl">
+          <form method="POST" action="{% url 'add_buku' %}">
+            {% csrf_token %}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+              <div>
+                <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Judul Buku</label>
+                <input type="text" name="judul" required class="w-full bg-[#f8fafc] border border-slate-200 rounded-xl px-4 py-3 text-slate-800 focus:outline-none focus:border-blue-500 transition" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Pengarang</label>
+                <input type="text" name="pengarang" required class="w-full bg-[#f8fafc] border border-slate-200 rounded-xl px-4 py-3 text-slate-800 focus:outline-none focus:border-blue-500 transition" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Kategori</label>
+                <select name="kategori" class="w-full bg-[#f8fafc] border border-slate-200 rounded-xl px-4 py-3 text-slate-800 focus:outline-none focus:border-blue-500 transition">
+                  <option value="Novel">Novel</option>
+                  <option value="Sains">Sains</option>
+                  <option value="Komputer">Komputer</option>
+                  <option value="Sejarah">Sejarah</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Penerbit</label>
+                <input type="text" name="penerbit" required class="w-full bg-[#f8fafc] border border-slate-200 rounded-xl px-4 py-3 text-slate-800 focus:outline-none focus:border-blue-500 transition" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Tahun Terbit</label>
+                <input type="number" name="tahun_terbit" required class="w-full bg-[#f8fafc] border border-slate-200 rounded-xl px-4 py-3 text-slate-800 focus:outline-none focus:border-blue-500 transition" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Stok</label>
+                <input type="number" name="stok" required class="w-full bg-[#f8fafc] border border-slate-200 rounded-xl px-4 py-3 text-slate-800 focus:outline-none focus:border-blue-500 transition" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">ISBN</label>
+                <input type="text" name="isbn" class="w-full bg-[#f8fafc] border border-slate-200 rounded-xl px-4 py-3 text-slate-800 focus:outline-none focus:border-blue-500 transition" placeholder="Contoh: 978-979-3062-79-2" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Rak / Lokasi</label>
+                <input type="text" name="rak" required class="w-full bg-[#f8fafc] border border-slate-200 rounded-xl px-4 py-3 text-slate-800 focus:outline-none focus:border-blue-500 transition" />
+              </div>
+            </div>
+            <div class="mb-6">
+              <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Deskripsi</label>
+              <textarea name="deskripsi" rows="3" class="w-full bg-[#f8fafc] border border-slate-200 rounded-xl px-4 py-3 text-slate-800 focus:outline-none focus:border-blue-500 transition"></textarea>
+            </div>
+            <div class="flex items-center justify-end gap-3 pt-4 border-t border-slate-100">
+              <a href="{% url 'list_buku' %}" class="px-6 py-2.5 rounded-xl border border-slate-200 font-medium text-sm text-slate-600 hover:bg-slate-50 transition">Batal</a>
+              <button type="submit" class="bg-[#2563eb] text-white px-6 py-2.5 rounded-xl font-medium text-sm hover:bg-blue-700 transition shadow-sm">Simpan Buku</button>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

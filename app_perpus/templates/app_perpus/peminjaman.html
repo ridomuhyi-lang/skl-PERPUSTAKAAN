@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peminjaman Buku - SIPUSTAKA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>body { font-family: 'Inter', sans-serif; }</style>
+  </head>
+  <body class="bg-[#f1f5f9] text-slate-900 h-screen overflow-hidden">
+    <div class="h-screen flex flex-col md:flex-row">
+      
+      <aside class="w-full md:w-64 h-screen bg-[#030712] text-slate-100 flex-none flex flex-col">
+        <div class="px-6 py-6 border-b border-slate-900">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-[#3b82f6] flex items-center justify-center font-bold text-white text-lg">P</div>
+            <div>
+              <p class="text-[10px] text-slate-500 uppercase tracking-widest">SIPUSTAKA</p>
+              <h1 class="text-sm font-bold text-white leading-tight">Sistem Peminjaman<br>Buku</h1>
+            </div>
+          </div>
+        </div>
+
+        
+       <nav class="flex-1 px-3 py-4 space-y-1">
+  <a href="{% url 'dashboard' %}" class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-200 bg-slate-900 rounded-xl shadow-inner">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4zM14 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2v-4z"/></svg>
+    Dashboard
+  </a>
+
+  
+  <a href="{% url 'list_buku' %}" class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-400 rounded-xl hover:bg-slate-900 transition">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+    Buku
+  </a>
+
+   <a href="{% url 'list_peminjaman' %}" class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-200 bg-slate-900 rounded-xl shadow-inner">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+  </svg>
+  Peminjaman
+</a>
+  
+  <a href="{% url 'list_siswa' %}" class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-400 rounded-xl hover:bg-slate-900 transition">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+    User
+  </a>
+</nav>
+      </aside>
+
+      <main class="flex-1 p-6 md:p-8 overflow-y-auto">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <p class="text-slate-400 text-sm font-medium">Catat peminjaman dan pengembalian buku.</p>
+            <h3 class="text-3xl font-bold text-slate-900 tracking-tight">Peminjaman</h3>
+          </div>
+          <a href="{% url 'add_peminjaman' %}" class="bg-[#2563eb] text-white px-5 py-2.5 rounded-xl font-medium text-sm flex items-center gap-2 hover:bg-blue-700 transition shadow-sm">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            Pinjam Buku
+          </a>
+        </div>
+
+        <div class="bg-white rounded-[24px] border border-slate-100 shadow-sm overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="border-b border-slate-100 text-slate-400 text-xs font-semibold uppercase tracking-wider bg-slate-50/50">
+                  <th class="px-6 py-4">ID</th>
+                  <th class="px-6 py-4">Nama Peminjam</th>
+                  <th class="px-6 py-4">Buku</th>
+                  <th class="px-6 py-4">Tanggal Pinjam</th>
+                  <th class="px-6 py-4">Jatuh Tempo</th>
+                  <th class="px-6 py-4">Keperluan</th>
+                  <th class="px-6 py-4">Petugas</th>
+                  <th class="px-6 py-4">Status</th>
+                  <th class="px-6 py-4 text-center">Aksi</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 text-sm text-slate-700">
+                {% for p in daftar_pinjam %}
+                <tr class="hover:bg-slate-50/50 transition">
+                  <td class="px-6 py-4 font-medium text-slate-900">{{ p.id }}</td>
+                  <td class="px-6 py-4">
+                    <p class="font-semibold text-slate-900">{{ p.nama_peminjam }}</p>
+                    <p class="text-xs text-slate-400">{{ p.kelas }} - {{ p.nis }}</p>
+                  </td>
+                  <td class="px-6 py-4 text-slate-800 font-medium">{{ p.judul_buku }}</td>
+                  <td class="px-6 py-4 text-slate-500">{{ p.tanggal_pinjam|date:"d M Y" }}</td>
+                  <td class="px-6 py-4 text-slate-500">{{ p.jatuh_tempo|date:"d M Y" }}</td>
+                  <td class="px-6 py-4 text-slate-500 max-w-xs truncate">{{ p.keperluan }}</td>
+                  <td class="px-6 py-4 text-slate-600 font-medium">{{ p.petugas }}</td>
+                  <td class="px-6 py-4">
+                    {% if p.status == 'Dipinjam' %}
+                    <span class="px-2 py-0.5 text-xs font-semibold text-amber-700 bg-amber-50 rounded-md">Dipinjam</span>
+                    {% else %}
+                    <span class="px-2 py-0.5 text-xs font-semibold text-emerald-700 bg-emerald-50 rounded-md">Dikembalikan</span>
+                    {% endif %}
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    {% if p.status == 'Dipinjam' %}
+                    <form action="{% url 'kembalikan_buku' p.id %}" method="POST" class="inline">
+                      {% csrf_token %}
+                      <button type="submit" class="px-3 py-1.5 text-xs font-medium text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg transition">
+                        Kembalikan
+                      </button>
+                    </form>
+                    {% else %}
+                    <span class="text-xs text-slate-400 italic">Selesai</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                {% empty %}
+                <tr>
+                  <td colspan="9" class="px-6 py-12 text-center text-slate-400">Belum ada transaksi peminjaman.</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
